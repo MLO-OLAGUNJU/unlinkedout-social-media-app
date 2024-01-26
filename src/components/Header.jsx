@@ -69,7 +69,7 @@ const Header = (props) => {
               <a>
                 <img src="images/user.svg" alt="" />
                 <span>Me</span>
-                {/* <img src="images/down-icon.svg" alt="" /> */}
+                <img src="images/down-icon.svg" alt="" />
               </a>
             </User>
 
