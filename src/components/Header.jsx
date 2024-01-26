@@ -77,7 +77,7 @@ const Header = (props) => {
               <a>
                 <img src="images/nav-work.svg" alt="" />
                 <span>Work</span>
-                <img src="images/down-icon.svg" alt="" />
+                {/* <img src="images/down-icon.svg" alt="" /> */}
               </a>
             </Work>
           </NavListWrap>
