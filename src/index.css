@@ -10,6 +10,10 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, sans-serif;
+}
+
 div,
 h1,
 h2,
