@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const RightSide = () => {
+const RightSide = (props) => {
   return <Container>RightSide</Container>;
 };
 
