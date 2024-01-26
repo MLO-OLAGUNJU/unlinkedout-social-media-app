@@ -13,6 +13,11 @@ const Home = (props) => {
           moving.
         </p>
       </Section>
+      <Layout>
+        <div>Left Side</div>
+        <div>Main</div>
+        <div>Right Side</div>
+      </Layout>
     </Container>
   );
 };
@@ -51,4 +56,6 @@ const Section = styled.section`
     padding: 0 5px;
   }
 `;
+
+const Layout = styled.div``;
 export default Home;
