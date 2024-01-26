@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import LeftSide from "./LeftSide";
+import RightSide from "./RightSide";
+import Main from "./Main";
 
 const Home = (props) => {
   return (
@@ -68,6 +71,7 @@ const Layout = styled.div`
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
+    padding: 0 5px;
   }
 `;
 export default Home;
