@@ -41,6 +41,7 @@ const Section = styled.section`
   text-align: center;
   text-decoration: underline;
   display: flex;
+  cursor: pointer;
   justify-content: center;
   h5 {
     color: #0a66c2;

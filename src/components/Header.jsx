@@ -1,13 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import useWindowSize from "../hooks/UseWindowSize";
 
 const Header = (props) => {
+  const { width } = useWindowSize();
+
   return (
     <Container>
       <Content>
         <Logo>
           <a href="/home">
-            <img src="images/out.png" alt="" />
+            {width < 768 ? (
+              <img src="/images/out.png" alt="LogoIcon" />
+            ) : (
+              <img
+                src="/images/unlink.png"
+                style={{ width: "160px" }}
+                alt="LogoIcon"
+              />
+            )}
           </a>
         </Logo>
         <Search>
