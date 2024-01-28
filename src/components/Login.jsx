@@ -13,7 +13,7 @@ const Login = (props) => {
       const result = await signInWithPopup(auth, provider);
       console.log(result);
       localStorage.setItem("token", result.user.accessToken);
-      // localStorage.setItem("user", JSON.stringify(result.user));
+      localStorage.setItem("user", JSON.stringify(result.user));
       navigate("/");
     } catch (error) {
       console.error(error);
