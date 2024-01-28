@@ -1,33 +1,40 @@
 import React from "react";
 import styled from "styled-components";
+import { BiLike } from "react-icons/bi";
+import { BiSolidLike } from "react-icons/bi";
+import { FaShare } from "react-icons/fa";
+import { FaRegComment } from "react-icons/fa";
+import { LuSend } from "react-icons/lu";
+import { FaHandsClapping } from "react-icons/fa6";
+import { BsThreeDots } from "react-icons/bs";
 
 const Main = (props) => {
   return (
     <Container>
       <ShareBox>
         <div>
-          <img src="/images/user.svg" alt="post-icon" />
+          <img src="images/user.svg" alt="" />
           <button>Start a post</button>
         </div>
 
         <div>
           <button>
-            <img src="/images/photo-icon.svg" alt="photo-icon" />
+            <img src="/images/photo-icon.png" alt="photo-icon" />
             <span>Photo</span>
           </button>
 
           <button>
-            <img src="/images/video-icon.svg" alt="video-icon" />
+            <img src="/images/video-icon.png" alt="video-icon" />
             <span>Video</span>
           </button>
 
           <button>
-            <img src="/images/event-icon.svg" alt="event" />
+            <img src="/images/event-icon.png" alt="event" />
             <span>Event</span>
           </button>
 
           <button>
-            <img src="/images/article-icon.svg" alt="article" />
+            <img src="/images/article-icon.png" alt="article" />
             <span>Write article</span>
           </button>
         </div>
@@ -44,22 +51,43 @@ const Main = (props) => {
               </div>
             </a>
             <button>
-              <img src="/images/ellipsis.svg" alt="elipsis-icon" />
+              <BsThreeDots />
             </button>
           </SharecActor>
           <Description>Description</Description>
           <SharedImg>
             <a>
-              <img src="images/user.svg" alt="shared-image" />
+              <img src="images/shared-img.png" alt="shared-image" />
             </a>
           </SharedImg>
           <SocialCounts>
             <li>
               <button>
-                <img src="" alt="" />
+                <BiSolidLike color="#0a66c2" />
+                <FaHandsClapping color="green" />
+                <span>75</span>
               </button>
             </li>
+            <li>
+              <a>2 comments</a>
+            </li>
           </SocialCounts>
+          <button>
+            <BiLike color="#0a66c2" />
+            <span>Like</span>
+          </button>
+          <button>
+            <FaRegComment color="#0a66c2" />
+            <span>Comments</span>
+          </button>
+          <button>
+            <FaShare color="#0a66c2" />
+            <span>Comments</span>
+          </button>
+          <button>
+            <LuSend color="#0a66c2" />
+            <span>Send</span>
+          </button>
         </Article>
       </div>
     </Container>
@@ -88,6 +116,9 @@ const ShareBox = styled(CommonCard)`
   margin: 0 0 8px;
   background: white;
   div {
+    img {
+      width: 30px;
+    }
     button {
       cursor: pointer;
       outline: none;
@@ -153,6 +184,7 @@ const SharecActor = styled.div`
   margin-bottom: 8px;
   align-items: center;
   display: flex;
+
   a {
     margin-right: 12px;
     flex-grow: 1;
@@ -219,5 +251,27 @@ const SharedImg = styled.div`
     height: 100%;
   }
 `;
-const SocialCounts = styled.div``;
+const SocialCounts = styled.ul`
+  line-height: 1.3;
+  display: flex;
+  align-items: flex-start;
+  overflow: auto;
+  margin: 0 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e9e5df;
+  list-style: none;
+  li {
+    margin-right: 5px;
+    font-size: 12px;
+    button {
+      display: flex;
+      background-color: transparent;
+      border: none;
+      gap: 5px;
+      img {
+        width: 15px;
+      }
+    }
+  }
+`;
 export default Main;

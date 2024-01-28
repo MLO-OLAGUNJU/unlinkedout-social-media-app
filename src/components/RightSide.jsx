@@ -70,6 +70,9 @@ const Title = styled.div`
 `;
 const FeedList = styled.ul`
   margin-top: 16px;
+  button {
+    cursor: pointer;
+  }
   li {
     display: flex;
     align-items: center;
