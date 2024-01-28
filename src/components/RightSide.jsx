@@ -36,10 +36,7 @@ const RightSide = (props) => {
         </Recommendation>
       </FollowCard>
       <BannerCard>
-        <img
-          src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
-          alt="ads banner"
-        />
+        <img src="images/unlinkedout-ads.jpg" alt="ads banner" />
       </BannerCard>
     </Container>
   );
@@ -58,7 +55,6 @@ const FollowCard = styled.div`
   border: none;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
   padding: 12px;
-  cursor: pointer;
 `;
 const Title = styled.div`
   display: inline-flex;
@@ -70,9 +66,7 @@ const Title = styled.div`
 `;
 const FeedList = styled.ul`
   margin-top: 16px;
-  button {
-    cursor: pointer;
-  }
+
   li {
     display: flex;
     align-items: center;
@@ -98,6 +92,7 @@ const FeedList = styled.ul`
       max-width: 480px;
       text-align: center;
       outline: none;
+      cursor: pointer;
     }
   }
 `;
@@ -108,6 +103,7 @@ const Avatar = styled.div`
   background-repeat: no-repeat;
   width: 48px;
   height: 48px;
+  cursor: pointer;
   margin-right: 8px;
 `;
 
@@ -116,6 +112,9 @@ const Recommendation = styled.div`
   display: flex;
   align-items: center;
   font-size: 14px;
+  cursor: pointer;
+  gap: 5px;
+  text-decoration: underline;
 `;
 const BannerCard = styled(FollowCard)`
   img {
