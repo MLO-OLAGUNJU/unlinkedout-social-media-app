@@ -72,22 +72,24 @@ const Main = (props) => {
               <a>2 comments</a>
             </li>
           </SocialCounts>
-          <button>
-            <BiLike color="#0a66c2" />
-            <span>Like</span>
-          </button>
-          <button>
-            <FaRegComment color="#0a66c2" />
-            <span>Comments</span>
-          </button>
-          <button>
-            <FaShare color="#0a66c2" />
-            <span>Comments</span>
-          </button>
-          <button>
-            <LuSend color="#0a66c2" />
-            <span>Send</span>
-          </button>
+          <SocialActions>
+            <button>
+              <BiLike color="#0a66c2" />
+              <span>Like</span>
+            </button>
+            <button>
+              <FaRegComment color="#0a66c2" />
+              <span>Comments</span>
+            </button>
+            <button>
+              <FaShare color="#0a66c2" />
+              <span>Share</span>
+            </button>
+            <button>
+              <LuSend color="#0a66c2" />
+              <span>Send</span>
+            </button>
+          </SocialActions>
         </Article>
       </div>
     </Container>
@@ -263,14 +265,40 @@ const SocialCounts = styled.ul`
   li {
     margin-right: 5px;
     font-size: 12px;
+    cursor: pointer;
     button {
+      cursor: pointer;
       display: flex;
       background-color: transparent;
       border: none;
-      gap: 5px;
-      img {
-        width: 15px;
-      }
+      gap: 3px;
+    }
+  }
+`;
+const SocialActions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+  min-height: 40px;
+  padding: 4px 8px;
+  button {
+    display: flex;
+    background-color: transparent;
+    gap: 5px;
+    border: none;
+    align-items: center;
+    padding: 8px 20px;
+    color: #0a66c2;
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.08);
+      border-radius: 5px;
+    }
+    @media (min-width: 768px) {
+      /* span {
+        margin-left: 8px;
+      } */
     }
   }
 `;
