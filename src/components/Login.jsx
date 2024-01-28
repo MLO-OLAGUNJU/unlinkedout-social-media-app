@@ -1,7 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+// import { Connect, connect } from "react-redux";
+// import { sigInAPI } from "../actions";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  const navigate = useNavigate();
+  const signIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log(result);
+      localStorage.setItem("token", result.user.accessToken);
+      localStorage.setItem("user", JSON.stringify(result.user));
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <Container>
       <Nav>
@@ -19,7 +36,7 @@ const Login = (props) => {
           <img src="images/login-hero.svg" alt="" />
         </Hero>
         <Form>
-          <Google>
+          <Google onClick={signIn}>
             <img src="images/google.svg" alt="" />
             Sign in with Google
           </Google>
@@ -140,6 +157,9 @@ const Form = styled.div`
   margin-top: 100px;
   display: flex;
   width: 480px;
+  img {
+    margin-right: 8px;
+  }
   @media (max-width: 768px) {
     margin-top: 20px;
   }
@@ -166,4 +186,13 @@ const Google = styled.button`
     color: rgba(0, 0, 0, 0.75);
   }
 `;
-export default Login;
+
+// const mapStateToProps = (state) => {
+//   return {};
+// };
+
+// const mapDispatchToProps = (dispatch) => ({
+//   SignIn: () => dispatch(sigInAPI()),
+// });
+
+export default /*connect(mapStateToProps, mapDispatchToProps)(*/ Login;
