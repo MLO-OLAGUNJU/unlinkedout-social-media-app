@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import useWindowSize from "../hooks/UseWindowSize";
 import { connect } from "react-redux";
+import { signOutAPI } from "../actions";
+import { signOut } from "firebase/auth";
 
 const Header = (props) => {
   const { width } = useWindowSize();
@@ -89,7 +91,7 @@ const Header = (props) => {
                   <img src="images/down-icon.svg" alt="" />
                 </span>
               </a>
-              <SignOut>
+              <SignOut onClick={() => props.signOut()}>
                 <a>Sign out</a>
                 <img src="" alt="" />
               </SignOut>
@@ -284,6 +286,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  signOut: () => dispatch(signOutAPI()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
