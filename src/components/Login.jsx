@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { signInAPI } from "../actions";
+import { Navigate } from "react-router-dom";
 
 const Login = (props) => {
   return (
     <Container>
+      {props.user && <Navigate to="/home" />}
       <Nav>
         <a href="/">
           <img src="/images/unlink.png" alt="" />
@@ -173,7 +175,11 @@ const Google = styled.button`
 `;
 
 // Map state and dispatch to props
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   signIn: () => dispatch(signInAPI()),
