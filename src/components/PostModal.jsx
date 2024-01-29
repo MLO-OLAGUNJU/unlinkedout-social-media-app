@@ -11,7 +11,7 @@ const PostModal = (props) => {
     <>
       {props.showModal === "open" && (
         <div>
-          <Container>
+          <Container onClick={(event) => reset(event)}>
             <Content>
               <Header>
                 <h2>Create a post</h2>
