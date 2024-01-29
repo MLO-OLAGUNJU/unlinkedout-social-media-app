@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
@@ -7,14 +7,35 @@ import { FaRegComment } from "react-icons/fa";
 import { LuSend } from "react-icons/lu";
 import { FaHandsClapping } from "react-icons/fa6";
 import { BsThreeDots } from "react-icons/bs";
+import PostModal from "./PostModal";
 
 const Main = (props) => {
+  const [showModal, setShowModal] = useState("");
+
+  const handleclick = (e) => {
+    e.preventDefault();
+    if (e.target !== e.currentTarget) {
+      return;
+    }
+
+    switch (showModal) {
+      case "open":
+        setShowModal("close");
+        break;
+      case "close":
+        setShowModal("open");
+        break;
+      default:
+        setShowModal("close");
+        break;
+    }
+  };
   return (
     <Container>
       <ShareBox>
         <div>
           <img src="images/user.svg" alt="" />
-          <button>Start a post</button>
+          <button onClick={handleclick}>Start a post</button>
         </div>
 
         <div>
@@ -92,6 +113,7 @@ const Main = (props) => {
           </SocialActions>
         </Article>
       </div>
+      <PostModal showModal={showModal} handleclick={handleclick} />
     </Container>
   );
 };
