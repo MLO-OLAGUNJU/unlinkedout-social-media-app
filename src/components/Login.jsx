@@ -1,24 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-// import { Connect, connect } from "react-redux";
-// import { sigInAPI } from "../actions";
-import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { signInAPI } from "../actions";
 
 const Login = (props) => {
-  const navigate = useNavigate();
-  const signIn = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      console.log(result);
-      // localStorage.setItem("token", result.user.accessToken);
-      localStorage.setItem("user", JSON.stringify(result.user));
-      navigate("/");
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <Container>
       <Nav>
@@ -36,9 +21,9 @@ const Login = (props) => {
           <img src="images/login-hero.svg" alt="" />
         </Hero>
         <Form>
-          <Google onClick={signIn}>
+          <Google onClick={() => props.signIn()}>
             <img src="images/google.svg" alt="" />
-            Sign in with Google
+            Log in with Google
           </Google>
         </Form>
       </Section>
@@ -187,12 +172,12 @@ const Google = styled.button`
   }
 `;
 
-// const mapStateToProps = (state) => {
-//   return {};
-// };
+// Map state and dispatch to props
+const mapStateToProps = (state) => ({});
 
-// const mapDispatchToProps = (dispatch) => ({
-//   SignIn: () => dispatch(sigInAPI()),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  signIn: () => dispatch(signInAPI()),
+});
 
-export default /*connect(mapStateToProps, mapDispatchToProps)(*/ Login;
+// Connect component to Redux
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
