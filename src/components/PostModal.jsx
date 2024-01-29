@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import ReactPlayer from "react-player";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
+  const [shareImage, setShareImage] = useState("");
+  const [videoLink, setVideoLink] = useState("");
+
+  const handleChange = (e) => {
+    const image = e.target.files[0];
+
+    if (image === "" || image === undefined) {
+      alert(`not an image, the file is a ${typeof image}`);
+      return;
+    }
+    setShareImage(image);
+  };
+
   const reset = (e) => {
     setEditorText("");
     props.handleclick(e);
   };
+
   return (
     <>
       {props.showModal === "open" && (
@@ -30,7 +45,34 @@ const PostModal = (props) => {
                     placeholder="What do you want to talk about?"
                     autoFocus={true}
                     onChange={(e) => setEditorText(e.target.value)}
-                  ></textarea>
+                  />
+                  <UploadImage>
+                    <input
+                      type="file"
+                      accept="image/gif, image/jpeg, image/png"
+                      name="image"
+                      id="file"
+                      style={{ display: "none" }}
+                      onChange={handleChange}
+                    />
+                    <p>
+                      <label htmlFor="file">Select an image to share</label>
+                    </p>
+                    {shareImage && (
+                      <img src={URL.createObjectURL(shareImage)} />
+                    )}
+                    <>
+                      <input
+                        type="text"
+                        placeholder="Please input a video link"
+                        value={videoLink}
+                        onChange={(e) => setVideoLink(e.target.value)}
+                      />
+                      {videoLink && (
+                        <ReactPlayer width={"100%"} url={videoLink} />
+                      )}
+                    </>
+                  </UploadImage>
                 </Editor>
               </SharedContent>
               <ShareCreation>
@@ -203,7 +245,7 @@ const Editor = styled.div`
     outline: none;
     font-size: 18px;
     /* font-weight: 700; */
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
   }
   input {
     width: 100%;
@@ -211,6 +253,19 @@ const Editor = styled.div`
     font-size: 16px;
     margin-bottom: 20px;
     border: none;
+  }
+`;
+
+const UploadImage = styled.div`
+  text-align: center;
+  img {
+    width: 100%;
+  }
+  label {
+    background-color: rgba(0, 0, 0, 0.08);
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
   }
 `;
 
