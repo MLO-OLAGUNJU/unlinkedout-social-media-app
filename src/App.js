@@ -4,7 +4,6 @@ import Login from "./components/Login";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
-// import Protected from "./components/Protected";
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Login />}></Route>
-          {/* <Route path="/" element={<Protected />}> */}
           <Route
             path="/home"
             index
@@ -23,7 +21,6 @@ function App() {
               </React.Fragment>
             }
           />
-          {/* </Route> */}
         </Routes>
       </Router>
     </div>
