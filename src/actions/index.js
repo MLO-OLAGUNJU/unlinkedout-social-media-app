@@ -34,3 +34,16 @@ export const getUserAuth = () => {
     });
   };
 };
+
+export const signOutAPI = () => {
+  return async (dispatch) => {
+    try {
+      await auth.signOut();
+      dispatch(setUser(null));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
+//  { signOutAPI };
