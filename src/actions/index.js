@@ -24,3 +24,13 @@ export const signInAPI = () => async (dispatch) => {
   //   dispatch({ type: "SIGN_IN_FAILURE", payload: error });
   // }
 };
+
+export const getUserAuth = () => {
+  return (dispatch) => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        dispatch(setUser(user));
+      }
+    });
+  };
+};
