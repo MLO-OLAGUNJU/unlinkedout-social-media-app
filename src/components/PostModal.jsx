@@ -11,7 +11,7 @@ const PostModal = (props) => {
     <>
       {props.showModal === "open" && (
         <div>
-          <Container onClick={(event) => reset(event)}>
+          <Container /*onClick={(event) => reset(event)}*/>
             <Content>
               <Header>
                 <h2>Create a post</h2>
@@ -27,7 +27,7 @@ const PostModal = (props) => {
                 <Editor>
                   <textarea
                     value={editorText}
-                    placeholder="what did you want to talk about"
+                    placeholder="What do you want to talk about?"
                     autoFocus={true}
                     onChange={(e) => setEditorText(e.target.value)}
                   ></textarea>
@@ -48,7 +48,7 @@ const PostModal = (props) => {
                     <span>Anyone</span>
                   </AssetButton>
                 </ShareCommentComponent>
-                <PostButton>
+                <PostButton disabled={!editorText ? true : false}>
                   <span>Post</span>
                 </PostButton>
               </ShareCreation>
@@ -68,6 +68,7 @@ const Container = styled.div`
   z-index: 9000;
   color: black;
   background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s;
 `;
 
 const Content = styled.div`
@@ -152,6 +153,7 @@ const AssetButton = styled.button`
   height: 40px;
   min-width: auto;
   color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 `;
 
 const Attachassets = styled.div`
@@ -177,15 +179,17 @@ const ShareCommentComponent = styled.div`
 const PostButton = styled.div`
   min-width: 60px;
   border-radius: 20px;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   padding-left: 16px;
   padding-right: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0a66c2;
-  color: #fff;
+  background: ${(props) => (props.disabled ? "rgba(0,0,0,0.3)" : " #0a66c2")};
+  color: ${(props) => (props.disabled ? "rgba(1,1,1,0.2)" : " #fff")};
   &:hover {
-    background-color: #004182;
+    background-color: ${(props) =>
+      props.disabled ? "rgba(0,0,0,0.3)" : " #004182"};
   }
 `;
 
@@ -198,13 +202,13 @@ const Editor = styled.div`
     border: none;
     outline: none;
     font-size: 18px;
-    font-weight: 700;
+    /* font-weight: 700; */
+    font-family: "Roboto", sans-serif;
   }
   input {
     width: 100%;
     height: 35px;
     font-size: 16px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom: 20px;
     border: none;
   }
