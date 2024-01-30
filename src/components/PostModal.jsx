@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
 import { connect } from "react-redux";
+import { postArticleAPI } from "../actions";
+import "firebase/auth";
+import { storage } from "../firebase";
+import { Timestamp } from "firebase/firestore";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
@@ -23,6 +27,42 @@ const PostModal = (props) => {
     setShareImage("");
     setVideoLink("");
     setAssetArea(area);
+  };
+
+  // const postArticle = (e) => {
+  //   e.preventDefault();
+  //   if (e.target !== e.currentTarget) {
+  //     return;
+  //   }
+  //   const result = {
+  //     image: shareImage,
+  //     video: videoLink,
+  //     user: props.user,
+  //     description: editorText,
+  //     timestamp: Timestamp.now(), // Use Timestamp.now() directly
+  //   };
+  //   props.postArticle(result);
+  //   reset(e);
+  // };
+
+  const postArticle = (e) => {
+    e.preventDefault();
+    if (e.target !== e.currentTarget) {
+      return;
+    }
+
+    const result = {
+      image: shareImage,
+      video: videoLink,
+      user: props.user,
+      description: editorText,
+    };
+
+    // Call the postArticle action
+    props.postArticle(result);
+
+    // Reset the state and close the modal
+    reset(e);
   };
 
   const reset = (e) => {
@@ -110,7 +150,10 @@ const PostModal = (props) => {
                     <span>Anyone</span>
                   </AssetButton>
                 </ShareCommentComponent>
-                <PostButton disabled={!editorText ? true : false}>
+                <PostButton
+                  disabled={!editorText ? true : false}
+                  onClick={(event) => postArticle(event)}
+                >
                   <span>Post</span>
                 </PostButton>
               </ShareCreation>
@@ -299,7 +342,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  postArticle: (result) => dispatch(postArticleAPI(result)),
+});
 
 // Connect component to Redux
 export default connect(mapStateToProps, mapDispatchToProps)(PostModal);

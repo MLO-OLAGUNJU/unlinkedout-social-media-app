@@ -6109,7 +6109,7 @@ firebase-tools@^13.1.0:
 
 firebase@^10.7.2:
   version "10.7.2"
-  resolved "https://registry.npmjs.org/firebase/-/firebase-10.7.2.tgz"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-10.7.2.tgz#6c777dccca70d715f58bb6ba0a50fbdc3e762674"
   integrity sha512-zED3kAJyf+Xx5tXpC3vjmlWTm/SIVoJJ6MOLuXYJkqKAUJLG7Q1Jxy6l1DxCzGgBqZHxc0Jh6q+qG++9kimHsw==
   dependencies:
     "@firebase/analytics" "0.10.0"
